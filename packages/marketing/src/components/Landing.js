@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,6 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MaterialLink from '@material-ui/core/Link';
 import { Link } from 'react-router-dom';
+// import Random from './Random';
+// import Random1 from './Random1';
 
 function Copyright() {
   return (
@@ -65,7 +67,16 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const classes = useStyles();
+  const [count,setCount]= useState(0);
+  const referkey = React.useRef(0);
+  useEffect(() => {
+    console.log("Landing calls",count)
+  },[count])
 
+  useEffect(() =>{
+    referkey.current = 1
+  })
+ 
   return (
     <React.Fragment>
       <main>
@@ -79,7 +90,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Home Page
+              Home Page{referkey.current}
             </Typography>
             <Typography
               variant="h5"
